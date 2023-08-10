@@ -37,7 +37,7 @@ router.get('/', asyncMiddleware(async (req, res) => {
     if (result.rows && result.rows.length > 0) {
       res.status(200).send(result.rows);
     } else {
-      res.status(404).send('No se encontraron registros');
+      res.status(404).send('No se encontraron registros en LIBRA');
     }
   } catch (err) {
     console.error(`Error executing the query in 'facturas_albaranes router': ${err} `);
