@@ -1,6 +1,6 @@
 require('dotenv').config({ path: './.env' });
 const oracledb = require('oracledb');
-const dbConfig = require('./dbconfig.js');
+const dbConfig = require('./dbConfig.js');
 const express = require('express');
 const cors = require('cors');
 const PORT = 3000;
