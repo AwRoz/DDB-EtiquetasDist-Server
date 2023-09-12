@@ -25,10 +25,14 @@ router.get('/', asyncMiddleware(async (req, res) => {
       query = `
         SELECT * FROM LIBRA.DDB_APP_FAC_ALB
         WHERE NUMERO_ALBARAN = :documento AND SERIE_ALBARAN = :serie AND ROWNUM = 1 ORDER BY EJERCICIO_ALBARAN DESC`
-    }else if(serie === 'PED' || serie === 'CON'){
+    }else if(serie === 'PED'){
       query = `
         SELECT * FROM LIBRA.DDB_APP_PEDIDOS
         WHERE NUMERO_PEDIDO = :documento AND SERIE_PEDIDO = :serie AND ROWNUM = 1 ORDER BY EJERCICIO_PEDIDO DESC`
+    }else if(serie === 'CON'){
+      query = `
+        SELECT * FROM LIBRA.DDB_APP_COTCON
+        WHERE NUMERO_COTIZACION = :documento AND SERIE_COTIZACION = :serie AND ROWNUM = 1 ORDER BY EJERCICIO_COTIZACION DESC`
     }
     //better to use named parameters to avoid sql injection
     queryParams = {documento, serie} 
