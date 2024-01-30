@@ -36,8 +36,10 @@ router.get('/', asyncMiddleware(async (req, res) => {
       WHERE ROWNUM = 1`
     }else if(serie === 'CON'){
       query = `
-        SELECT * FROM LIBRA.DDB_APP_COTCON
-        WHERE NUMERO_COTIZACION = :documento AND SERIE_COTIZACION = :serie AND ROWNUM = 1 ORDER BY EJERCICIO_COTIZACION DESC`
+      SELECT * FROM LIBRA.DDB_APP_COTCON
+      WHERE NUMERO_COTIZACION = :documento AND SERIE_COTIZACION = :serie
+      ORDER BY EJERCICIO_COTIZACION DESC
+      FETCH FIRST 1 ROW ONLY`
     }
     //better to use named parameters to avoid sql injection
     queryParams = {documento, serie} 
